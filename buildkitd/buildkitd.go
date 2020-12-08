@@ -205,6 +205,7 @@ func Start(ctx context.Context, image string, settings Settings, reset bool) err
 		"--label", fmt.Sprintf("dev.earthly.settingshash=%s", settingsHash),
 		"--name", ContainerName,
 		"--privileged",
+		"--userns", "host",
 	}
 	if os.Getenv("EARTHLY_WITH_DOCKER") == "1" {
 		// Add /sys/fs/cgroup if it's earthly-in-earthly.
